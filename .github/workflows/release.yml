@@ -4,14 +4,8 @@ on:
   push:
     branches:
       - main
-      - alpha
-      - beta
 
-jobs:
-  test:
-    name: Test and lint
-    uses: open-sauced/open-sauced/.github/workflows/development.yml@main
-           
+jobs:       
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
