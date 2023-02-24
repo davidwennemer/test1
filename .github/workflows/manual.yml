@@ -28,7 +28,7 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: ServiceNow-DevOps-Agent-Job-Notification@1
-      id: Phase1
+      run: echo "Test ${{ github.event.inputs.name }}"
 
   # This workflow contains a single job called "greet"
   test:
