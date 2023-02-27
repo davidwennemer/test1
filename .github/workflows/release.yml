@@ -18,6 +18,7 @@ jobs:
           instance-name: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
+          state: 'Building'
   test:
     name: Test
     runs-on: ubuntu-latest
