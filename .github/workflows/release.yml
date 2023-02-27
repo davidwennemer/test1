@@ -20,7 +20,7 @@ jobs:
           context-github: ${{ toJSON(github) }}
           state: 'Completed'
 
-test:
+  test:
     name: Test
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +32,7 @@ test:
           instance-name: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
-         
+          state: 'Completed'
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
