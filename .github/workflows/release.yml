@@ -18,7 +18,7 @@ jobs:
           instance-name: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
-          state: 'Completed'
+          state: ${{ GITHUB_STATE }}
 
   test:
     name: Test
@@ -32,7 +32,7 @@ jobs:
           instance-name: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
-          state: 'Completed'
+          state: ${{ GITHUB_STATE }}
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
