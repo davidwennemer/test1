@@ -33,8 +33,7 @@ jobs:
           instance-name: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
-          state: 'testing'
-          commits: ${{ env.commits }}
+
     - name: Test Step
       run: echo "This is the Test Step"
   deploy:
