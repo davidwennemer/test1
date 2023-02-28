@@ -17,7 +17,7 @@ jobs:
           devops-integration-user-pass: ${{ secrets.DEVOPS_INTEGRATION_USER_PASS }}
           tool-id: ${{ secrets.TOOL_ID}}
           context-github: ${{ toJSON(github) }}
-          job-name: "Build"
+          job-name: 'Build'
           state: 'building'
           commits: ${{ env.commits }}
   test:
@@ -32,7 +32,7 @@ jobs:
           instance-name: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
-          job-name: "Test"
+          job-name: 'Test'
           state: 'testing'
           commits: ${{ env.commits }}
   deploy:
