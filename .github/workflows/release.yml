@@ -20,6 +20,8 @@ jobs:
           job-name: 'Build'
           state: 'building'
           commits: ${{ env.commits }}
+    - name: Build Step
+      run: echo "This is the Build Step"
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -35,6 +37,8 @@ jobs:
           job-name: 'Test'
           state: 'testing'
           commits: ${{ env.commits }}
+    - name: Test Step
+      run: echo "This is the Test Step"
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
