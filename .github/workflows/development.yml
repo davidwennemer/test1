@@ -1,5 +1,4 @@
-name: test-notification
-
+name: development
 # Controls when the action will run. 
 on:
   push:
