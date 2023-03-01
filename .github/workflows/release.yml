@@ -19,7 +19,7 @@ jobs:
           context-github: ${{ toJSON(github) }}
           state: 'building'
           commits: ${{ env.commits }}
-    - name: Build Step
+    - name: Build1
       run: echo "This is the Build Step"
   test:
     name: Test
@@ -34,7 +34,7 @@ jobs:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
 
-    - name: Test Step
+    - name: Test1
       run: echo "This is the Test Step"
   deploy:
     name: Deploy
