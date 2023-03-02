@@ -22,6 +22,10 @@ jobs:
           interval: '1000'
     - name: Build1
       run: echo "This is the Build Step"
+    - name: Sleep for 30 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '30s'
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -38,10 +42,18 @@ jobs:
 
     - name: Test1
       run: echo "This is the Test Step"
+    - name: Sleep for 30 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '30s'
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
+     - name: Sleep for 30 seconds
+       uses: jakejarvis/wait-action@master
+        with:
+        time: '30s'
       - name: ServiceNow Change
         uses: ServiceNow/servicenow-devops-change@v1.35.2
         with:
