@@ -20,6 +20,10 @@ jobs:
           state: 'building'
           commits: ${{ env.commits }}
           interval: '1000'
+    - name: Sleep for 30 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '30s'   
     - name: Build1
       run: echo "This is the Build Step"
   test:
@@ -41,7 +45,7 @@ jobs:
     - name: Sleep for 30 seconds
       uses: jakejarvis/wait-action@master
       with:
-        time: '10s'
+        time: '20s'
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -49,7 +53,7 @@ jobs:
       - name: Sleep for 30 seconds
         uses: jakejarvis/wait-action@master
         with:
-          time: '30s'
+          time: '10s'
       - name: ServiceNow Change
         uses: ServiceNow/servicenow-devops-change@v1.35.2
         with:
