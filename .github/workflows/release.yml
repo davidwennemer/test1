@@ -25,7 +25,7 @@ jobs:
     - name: Sleep for 30 seconds
       uses: jakejarvis/wait-action@master
       with:
-        time: '30s'
+        time: '10s'
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
     - name: Sleep for 30 seconds
       uses: jakejarvis/wait-action@master
       with:
-        time: '30s'
+        time: '20s'
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
