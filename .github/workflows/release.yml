@@ -24,7 +24,7 @@ jobs:
       uses: jakejarvis/wait-action@master
       with:
         time: '30s'   
-    - name: Build1
+
   changeApproval:
     name: ServiceNow Change Approval
     needs: build
