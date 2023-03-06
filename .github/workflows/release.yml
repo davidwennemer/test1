@@ -19,25 +19,15 @@ jobs:
           context-github: ${{ toJSON(github) }}
           state: 'building'
           commits: ${{ env.commits }}
-    - name: Build1
-      run: echo "This is the Build Step"
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-    - name: ServiceNow DevOps Notification
-      uses: rapdev-io/sn-devops-notification@v1.0.11
+          interval: '100'
+    - name: Sleep for 30 seconds
+      uses: jakejarvis/wait-action@master
       with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-pass: ${{ secrets.SN_DEVOPS_PASSWORD }}
-          instance-name: ${{ secrets.SN_INSTANCE_URL }}
-          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-          context-github: ${{ toJSON(github) }}
+        time: '30s'   
 
-    - name: Test1
-      run: echo "This is the Test Step"
-  deploy:
-    name: Deploy
+  changeApproval:
+    name: ServiceNow Change Approval
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: ServiceNow Change
@@ -48,7 +38,15 @@ jobs:
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
-          job-name: 'Deploy'
+          job-name: 'ServiceNow Change Approval'
           change-request: '{"setCloseCode":"true","attributes":{"short_description":"Github Deploy - Automated Software Deployment","description":"Automated Software Deployment.","category":"DevOps","assignment_group":"a715cd759f2002002920bde8132e7018","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed"}}'
-          interval: '100'
-          timeout: '180'
+          interval: '200'
+          timeout: '3600'
+
+  deploy:
+    name: Deploy
+    needs: changeApproval
+    runs-on: ubuntu-latest
+    steps:     
+      - name: Run Deployment Script
+        run: echo "Deployment Finished....."
