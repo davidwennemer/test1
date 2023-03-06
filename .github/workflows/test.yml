@@ -2,9 +2,7 @@ name: Test
 
 
 on:
-  push:
-    branches:
-      - AM_Test
+  workflow_dispatch:
     
 
 jobs:
