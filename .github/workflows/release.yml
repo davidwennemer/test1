@@ -28,6 +28,7 @@ jobs:
       run: echo "This is the Build Step"
   test:
     name: Test
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: ServiceNow DevOps Notification
