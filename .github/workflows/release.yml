@@ -49,6 +49,7 @@ jobs:
         time: '20s'
   deploy:
     name: Deploy
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Sleep for 30 seconds
