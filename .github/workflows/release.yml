@@ -48,7 +48,6 @@ jobs:
     name: Deploy
     needs: changeApproval
     runs-on: ubuntu-latest
-
     steps:     
       - name: Run Deployment Script
         run: echo "Deployment Finished....."
