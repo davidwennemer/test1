@@ -31,10 +31,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Sleep for 30 seconds
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '10s'
       - name: ServiceNow Change
         uses: ServiceNow/servicenow-devops-change@v1.35.2
         with:
@@ -51,7 +47,7 @@ jobs:
   deploy:
     name: Deploy
     needs: changeApproval
-    runs-on: ubutun-latest
+    runs-on: ubuntu-latest
 
     steps:     
       - name: Run Deployment Script
