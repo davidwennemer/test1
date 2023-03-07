@@ -23,9 +23,9 @@ jobs:
     name: Update
     runs-on: ubuntu-latest
     steps:
-    - name: ServiceNow DevOps Notification
-      uses: rapdev-io/sn-devops-notification@v1.0.11
-      with:
+     - name: ServiceNow DevOps Change Update
+       uses: rapdev-io/sn-devops-change-update@v2.3.1
+       with:
           devops-integration-user-name: ${{ secrets.DEVOPS_INTEGRATION_USER_NAME }}
           devops-integration-user-pass: ${{ secrets.DEVOPS_INTEGRATION_USER_PASS }}
           tool-id: ${{ secrets.TOOL_ID}}
