@@ -31,4 +31,6 @@ jobs:
           tool-id: ${{ secrets.TOOL_ID}}
           context-github: ${{ toJSON(github) }}
           instance-name: 'dev98557'
-          state: 'building'
+          change-state: 'review'
+          change-number: 'CHG0030001'
+          change-result: 'test'
