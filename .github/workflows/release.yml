@@ -17,6 +17,7 @@ jobs:
           devops-integration-user-pass: ${{ secrets.DEVOPS_INTEGRATION_USER_PASS }}
           tool-id: ${{ secrets.TOOL_ID}}
           context-github: ${{ toJSON(github) }}
+          instance-name: 'dev98557'
           state: 'building'
     - name: Sleep for 30 seconds
       uses: jakejarvis/wait-action@master
