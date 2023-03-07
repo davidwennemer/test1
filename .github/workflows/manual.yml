@@ -10,51 +10,25 @@ on:
     inputs:
       name:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'Change Number'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'CHG00'
         # Input has to be provided for the workflow to run
         required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  build:
-    name: Build
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Runs a single command using the runners shell
-    - name: ServiceNow-DevOps-Agent-Job-Notification@1
-      run: echo "Test ${{ github.event.inputs.name }}"
-
-  # This workflow contains a single job called "greet"
-  test:
-    name: Test
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Test ${{ github.event.inputs.name }}"
-
-  deploy:
-    name: Deploy
+   changeUpdate:
+    name: Update
     runs-on: ubuntu-latest
     steps:
-      - name: ServiceNow Change
-        uses: ServiceNow/servicenow-devops-change@v1.34.2
-        with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
-          instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+    - name: ServiceNow DevOps Notification
+      uses: rapdev-io/sn-devops-notification@v1.0.11
+      with:
+          devops-integration-user-name: ${{ secrets.DEVOPS_INTEGRATION_USER_NAME }}
+          devops-integration-user-pass: ${{ secrets.DEVOPS_INTEGRATION_USER_PASS }}
+          tool-id: ${{ secrets.TOOL_ID}}
           context-github: ${{ toJSON(github) }}
-          job-name: 'Deploy'
-          change-request: '{"setCloseCode":"true","attributes":{"short_description":"Github Test1 Automated Software Deployment","description":"Automated Software Deployment from the test1 repo.","assignment_group":"a715cd759f2002002920bde8132e7018","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed"}}'
-          interval: '100'
-          timeout: '180'
+          instance-name: 'dev98557'
+          state: 'building'
