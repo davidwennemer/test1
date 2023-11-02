@@ -13,8 +13,8 @@ jobs:
     - name: ServiceNow DevOps Notification
       uses: rapdev-io/sn-devops-notification@v1.0.11
       with:
-          devops-integration-user-name: ${{ secrets.DEVOPS_INTEGRATION_USER_NAME }}
-          devops-integration-user-pass: ${{ secrets.DEVOPS_INTEGRATION_USER_PASS }}
+          devops-integration-user-name: 'david.wennemer'
+          devops-integration-user-pass: 'P@nthErs22'
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID}}
           context-github: ${{ toJSON(github) }}
           instance-name: 'dev98557'
