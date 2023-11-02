@@ -15,7 +15,7 @@ jobs:
       with:
           devops-integration-user-name: 'david.wennemer'
           devops-integration-user-pass: 'P@nthErs22'
-          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID}}
+          tool-id: 'DW Github'
           context-github: ${{ toJSON(github) }}
           instance-name: 'dev98557'
           state: 'building'
